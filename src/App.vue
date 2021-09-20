@@ -1,28 +1,33 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <QuizButton @click="showModalHandler"/>
+    <QuizModal v-show="showQuiz"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import QuizModal from '@/components/Quiz/QuizModal'
+import QuizButton from "@/components/QuizButton"
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    QuizButton,
+    QuizModal
+  },
+  data(){
+    return{
+      showQuiz:false
+    }
+  },
+  methods:{
+    showModalHandler(){
+      this.showQuiz=true
+    },
+    hideModalHandler(){
+      this.showQuiz=false
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style src="./assets/index.css">
