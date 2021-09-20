@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <input type="checkbox" class="checkbox" :value="value" :id="value">
-    <label class="label mt-2" :for="value">
-      <span class="text-xl font-bold"><slot></slot></span>
+  <div class="mt-2 flex">
+    <input type="checkbox" class="checkbox" :value="value" :id="value" >
+    <label class="label" :for="value">
+      <span class="text-xl font-bold  ml-1"><slot></slot></span>
     </label>
   </div>
 </template>

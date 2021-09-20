@@ -4,7 +4,11 @@ module.exports = {
     theme: {
         extend: {
             spacing: {
-                '36': '8rem'
+                '36': '8rem',
+                '65px':'65px'
+            },
+            minWidth: {
+                '65px':'65px'
             },
             colors: {
                 'primary': '#F7AB0D',

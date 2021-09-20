@@ -1,9 +1,9 @@
 <template>
-<div>
+<div class="my-auto">
   <div class="mb-5 bg-white p-3 rounded-xl text-left">
     <span class="text-gray-900 text-lg font-bold ml-1">{{value}}</span> <span class="text-gray-400 text-lg font-bold">₽</span>
   </div>
-  <input type="range" min="0" max="100000" v-model="value" ref="slider" class="input">
+  <input type="range" min="0" max="1000000" v-model="value" ref="slider" class="input">
 </div>
 </template>
 
@@ -12,7 +12,7 @@ export default {
   name: "RangeSlider",
   data(){
     return{
-      value:0
+      value:666666
     }
   },
   watch:{

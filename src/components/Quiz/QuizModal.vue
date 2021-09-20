@@ -1,37 +1,51 @@
 <template>
-  <div class="fixed p-3 sm:w-full sm:h-screen max-h-screen inset-0 flex flex-col bg-primary">
-    <QuizSlider class="h-full">
-<!--      <QuizBody class="flex flex-col">-->
-<!--        <QuizHeader :mark="mark" @hideModalHandler="hideModalHandler">Какой тип квартиры вас интересует?</QuizHeader>-->
-<!--        <QuizCheckbox v-for="room in form.rooms" :key="room.id" :value="room.value">-->
-<!--          {{ room.name }}-->
-<!--        </QuizCheckbox>-->
-<!--        <RangeSlider/>-->
-<!--      </QuizBody>-->
-      <QuizBody>
-        <QuizHeader :mark="mark" @hideModalHandler="hideModalHandler">Стоимость квартиры</QuizHeader>
-        <RangeSlider class="my-auto"/>
-      </QuizBody>
-    </QuizSlider>
-    <QuizNavigation/>
+  <div class="fixed p-7 sm:w-full sm:h-screen max-h-screen inset-0 flex flex-col bg-primary overflow-hidden">
+    <QuizBody v-if="current===1">
+      <QuizHeader @hideModalHandler="hideModalHandler">Какой тип квартиры вас интересует?</QuizHeader>
+      <QuizCheckbox v-for="room in form.rooms" :key="room.id" :value="room.value">
+        {{ room.name }}
+      </QuizCheckbox>
+    </QuizBody>
+    <QuizBody v-else-if="current===2">
+      <QuizHeader @hideModalHandler="hideModalHandler">Стоимость кавртиры</QuizHeader>
+      <RangeSlider/>
+    </QuizBody>
+    <QuizBody v-else-if="current===3">
+      <QuizHeader @hideModalHandler="hideModalHandler">Пусто 1</QuizHeader>
+    </QuizBody>
+    <QuizBody v-else-if="current===4">
+      <QuizHeader @hideModalHandler="hideModalHandler">Пусто 2</QuizHeader>
+    </QuizBody>
+    <QuizBody v-else-if="current===5">
+      <QuizHeader @hideModalHandler="hideModalHandler">Найдены квартиры по вашему запросу</QuizHeader>
+      <PhoneInput/>
+    </QuizBody>
+    <QuizBody v-else-if="current===6">
+      <QuizHeader @hideModalHandler="hideModalHandler"/>
+      <QuizThanks/>
+    </QuizBody>
+    <QuizNavigation :current="current" @next="changeCurrent" @previous="backCurrent"/>
   </div>
 </template>
 
 <script>
-import QuizHeader from "@/components/Quiz/QuizHeader";
 import QuizNavigation from "@/components/Quiz/QuizNavigation";
-import QuizSlider from "@/components/Quiz/QuizSlider";
 import QuizBody from "@/components/Quiz/QuizBody";
+import QuizHeader from "@/components/Quiz/QuizHeader";
+import QuizCheckbox from "@/components/Quiz/QuizCheckbox";
 import RangeSlider from "@/components/Quiz/RangeSlider";
+import PhoneInput from "@/components/Quiz/PhoneInput";
+import QuizThanks from "@/components/Quiz/QuizThanks";
+
 
 export default {
   name: "QuizModal",
-  components: {RangeSlider,  QuizBody, QuizSlider, QuizNavigation, QuizHeader},
+  components: {QuizThanks, PhoneInput, RangeSlider, QuizCheckbox, QuizHeader, QuizBody, QuizNavigation},
   props: ['hideModalHandler'],
   data() {
     return {
-      mark: require('../../assets/mark.svg'),
       arrow: require('../../assets/arrow.svg'),
+      current:1,
       form: {
         rooms: [
           {
@@ -54,7 +68,15 @@ export default {
             name: '3-комнатная',
             value: '3-комнатная'
           }]
-      }
+      },
+    }
+  },
+  methods:{
+    changeCurrent(){
+      this.current++
+    },
+    backCurrent(){
+      this.current--
     }
   }
 }
