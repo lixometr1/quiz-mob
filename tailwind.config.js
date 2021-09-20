@@ -5,6 +5,11 @@ module.exports = {
         extend: {
             spacing: {
                 '36': '8rem'
+            },
+            colors: {
+                'primary': '#F7AB0D',
+                'secondary': '#E40505',
+                'accept': '#1BD741'
             }
         },
     },

@@ -1,3 +1,9 @@
+:root {
+    --primary:'#F7AB0D';
+    --color-secondary:'#E40505';
+    --accept:'#1BD741'
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
