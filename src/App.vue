@@ -1,7 +1,12 @@
 <template>
   <div id="app">
-    <QuizButton @click="showModalHandler"/>
-    <QuizModal v-show="showQuiz"/>
+    <QuizButton @showModalHandler="showModalHandler" :img="home" class="bg-primary">
+      Подобрать квартиру
+    </QuizButton>
+    <QuizButton :img="whatsapp" class="bg-accept">
+      Написать в Ватсапп
+    </QuizButton>
+    <QuizModal v-show="showQuiz" :hideModalHandler="hideModalHandler"/>
   </div>
 </template>
 
@@ -17,7 +22,9 @@ export default {
   },
   data(){
     return{
-      showQuiz:false
+      showQuiz:true,
+      home: require('./assets/home.svg'),
+      whatsapp: require('./assets/whatsapp.svg')
     }
   },
   methods:{
