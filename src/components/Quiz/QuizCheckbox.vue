@@ -2,7 +2,7 @@
   <div class="mt-2 flex">
     <input type="checkbox" class="checkbox" :value="value" :id="value" >
     <label class="label" :for="value">
-      <span class="text-xl font-bold  ml-1"><slot></slot></span>
+      <span class="text-xl font-bold "><slot></slot></span>
     </label>
   </div>
 </template>
@@ -45,7 +45,8 @@ export default {
     background-size: 50% 50%;
   }
   .checkbox:checked + .label::before {
-    background-image: url('../../assets/check.svg');
+    background-image: url('../../assets/img.png');
+    background-size: 20px;
   }
 
 </style>
