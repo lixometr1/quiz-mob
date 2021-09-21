@@ -20,7 +20,8 @@ module.exports = {
                 'accept': '#1BD741'
             },
             fontSize:{
-                'header':'1.625rem'
+                'header':'1.625rem',
+                '2rem':'2rem'
             },
             lineHeight: {
                 'header':'1.625rem'
