@@ -1,6 +1,6 @@
 <template>
-<div class="">
-  <div class="mb-5 bg-white p-3 rounded-xl text-left">
+<div class="mt-10">
+  <div class="mb-11 bg-white p-3 rounded-xl text-left">
     <span class="text-gray-900 text-lg font-bold ml-1">{{value}}</span> <span class="text-gray-400 text-lg font-bold">₽</span>
   </div>
   <label  class="label">
