@@ -18,6 +18,12 @@ module.exports = {
                 'primary': '#F7AB0D',
                 'secondary': '#E40505',
                 'accept': '#1BD741'
+            },
+            fontSize:{
+                'header':'1.625rem'
+            },
+            lineHeight: {
+                'header':'1.625rem'
             }
         },
     },

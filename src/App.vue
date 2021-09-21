@@ -1,18 +1,20 @@
 <template>
   <div id="app">
-    <QuizButton @showModalHandler="showModalHandler" class="bg-primary">
-      <HomeSVG slot="img"/>
-      <span slot="txt">
+    <div class="fixed bottom-0 right-0 flex flex-col items-end	">
+      <QuizModal v-if="showQuiz" :hideModalHandler="hideModalHandler"/>
+      <QuizButton @showModalHandler="showModalHandler" class="bg-primary" v-else>
+        <HomeSVG slot="img"/>
+        <span slot="txt">
         Подобрать квартиру
       </span>
-    </QuizButton>
-    <QuizButton class="bg-accept">
-      <WhatSVG slot="img"/>
-      <span slot="txt">
+      </QuizButton>
+      <QuizButton class=" bg-accept">
+        <WhatSVG slot="img"/>
+        <span slot="txt">
         Написать в Ватсапп
       </span>
-    </QuizButton>
-    <QuizModal v-show="showQuiz" :hideModalHandler="hideModalHandler"/>
+      </QuizButton>
+    </div>
   </div>
 </template>
 

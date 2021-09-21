@@ -1,6 +1,6 @@
 <template>
-  <div class="mt-2 flex">
-    <input type="checkbox" class="checkbox" :value="value" :id="value" >
+  <div class="mt-3.5 flex">
+    <input type="checkbox" class="checkbox" :value="value" :id="value"  @change="$emit('checkedForm',$event)" :checked="checkedRooms.includes(value)">
     <label class="label" :for="value">
       <span class="text-xl font-bold "><slot></slot></span>
     </label>
@@ -14,7 +14,8 @@ export default {
     value:{
       type:String,
       required: true
-    }
+    },
+    checkedRooms:Array
   }
 }
 </script>
@@ -39,7 +40,7 @@ export default {
     flex-grow: 0;
     background-color: white;
     border-radius: 10px;
-    margin-right: 0.5em;
+    margin-right: 1.375rem;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 50% 50%;

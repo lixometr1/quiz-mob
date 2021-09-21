@@ -1,13 +1,14 @@
 <template>
-  <div class="fixed p-7 max-w-xs h-quizh max-h-full inset-0 flex flex-col bg-primary overflow-hidden rounded-2xl">
+  <div
+      class="p-6 max-w-xs w-80 h-quizh max-h-full flex flex-col bg-primary overflow-hidden rounded-2xl border-box shadow-2xl relative">
     <QuizBody v-if="current===1">
       <QuizHeader @hideModalHandler="hideModalHandler">Какой тип квартиры вас интересует?</QuizHeader>
-      <QuizCheckbox v-for="room in form.rooms" :key="room.id" :value="room.value">
+      <QuizCheckbox v-for="room in form.rooms" :key="room.id" :value="room.value" @checkedForm="checkingCheck" :checkedRooms="checkedRooms">
         {{ room.name }}
       </QuizCheckbox>
     </QuizBody>
     <QuizBody v-else-if="current===2">
-      <QuizHeader @hideModalHandler="hideModalHandler">Стоимость кавртиры</QuizHeader>
+      <QuizHeader @hideModalHandler="hideModalHandler">Стоимость квартиры</QuizHeader>
       <RangeSlider/>
     </QuizBody>
     <QuizBody v-else-if="current===3">
@@ -45,7 +46,7 @@ export default {
   data() {
     return {
       arrow: require('../../assets/arrow.svg'),
-      current:1,
+      current: 1,
       form: {
         rooms: [
           {
@@ -69,14 +70,26 @@ export default {
             value: '3-комнатная'
           }]
       },
+      checkedRooms: []
     }
   },
-  methods:{
-    changeCurrent(){
-      this.current++
+  methods: {
+    changeCurrent() {
+      if(this.checkedRooms.length){
+        this.current++
+        return
+      }
+      alert('Выберите кв')
     },
-    backCurrent(){
+    backCurrent() {
       this.current--
+    },
+    checkingCheck(e) {
+      if (e.currentTarget.checked) {
+        this.checkedRooms = [...this.checkedRooms, e.target.value]
+      } else {
+        this.checkedRooms = this.checkedRooms.filter((el) => el !== e.target.value)
+      }
     }
   }
 }

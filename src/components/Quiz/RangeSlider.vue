@@ -1,9 +1,11 @@
 <template>
-<div class="my-auto">
+<div class="">
   <div class="mb-5 bg-white p-3 rounded-xl text-left">
     <span class="text-gray-900 text-lg font-bold ml-1">{{value}}</span> <span class="text-gray-400 text-lg font-bold">₽</span>
   </div>
-  <input type="range" min="0" max="1000000" v-model="value" ref="slider" class="input">
+  <label  class="label">
+    <input type="range" min="0" max="1000000" v-model="value" ref="slider" class="input">
+  </label>
 </div>
 </template>
 
@@ -34,36 +36,37 @@ export default {
 .input[type="range"]{
   position: relative;
   -webkit-appearance: none;
-  -moz-appearance: none;
+  -moz-appearance:initial;
   display: block;
   width: 100%;
   height: 8px;
   background-color: #E40505;
   border-radius: 8px;
   outline: none;
+  z-index: 1;
+
 }
 
-.input[type="range"]::before{
+.label::before{
   content: '';
   position: absolute;
   width: 20px;
   height: 20px;
   border-radius: 50%;
   background-color: #E40505;
-  transform: translate(0px, -6px);
+  transform: translate(45px, -6px);
   left: 0;
 }
 
-.input[type="range"]::after{
+.label::after{
   content: '';
   position: absolute;
   width: 20px;
   height: 20px;
   border-radius: 50%;
   background-color: white;
-  transform: translate(0px, -6px);
+  transform: translate(-44.5px, -14px);
   right: 0;
-  z-index: -1;
 }
 
 .input[type="range"]::-webkit-slider-runnable-track{
