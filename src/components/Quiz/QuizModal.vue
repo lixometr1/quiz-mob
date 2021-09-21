@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed p-7 sm:w-full sm:h-screen max-h-screen inset-0 flex flex-col bg-primary overflow-hidden">
+  <div class="fixed p-7 max-w-xs h-quizh max-h-full inset-0 flex flex-col bg-primary overflow-hidden rounded-2xl">
     <QuizBody v-if="current===1">
       <QuizHeader @hideModalHandler="hideModalHandler">Какой тип квартиры вас интересует?</QuizHeader>
       <QuizCheckbox v-for="room in form.rooms" :key="room.id" :value="room.value">

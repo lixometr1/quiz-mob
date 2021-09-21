@@ -5,10 +5,14 @@ module.exports = {
         extend: {
             spacing: {
                 '36': '8rem',
-                '65px':'65px'
+                '65px':'65px',
+                'quizh':'600px',
             },
             minWidth: {
                 '65px':'65px'
+            },
+            maxHeight:{
+                'quizh':'600px',
             },
             colors: {
                 'primary': '#F7AB0D',
